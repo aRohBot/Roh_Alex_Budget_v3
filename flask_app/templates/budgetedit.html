@@ -51,8 +51,10 @@
                 <input class="form-control" type="text" name="year" id="year" value="{{budget.year}}">
                 <input type="hidden" name="id" id="id" value="{{budget.id}}">
                 <input type="hidden" name="user_id" id="user_id" value="{{session['user_id']}}">
-                <input type="submit" value="Update">
-            </form>
+                <div class="d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Update">
+                </div>
+                </form>
             </div>
         </div>
     </div>

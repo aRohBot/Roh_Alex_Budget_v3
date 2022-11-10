@@ -38,7 +38,7 @@
                         <tr>
                             <td>{{i.company_name}}</td>
                             <td>{{i.monthly_payment}}</td>
-                            <td><a href="/income/edit/{{i.id}}">edit</a>|<a href="/income/delete/{{i.id}}">delete</a></td>
+                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/income/edit/{{i.id}}">edit</a></button>|<button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/income/delete/{{i.id}}">delete</a></button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -63,7 +63,9 @@
                             <input class="form-control" type="text" name="monthly_payment" id="monthly_payment">
                         </div>
                         <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
-                        <input type="submit" value="Add">
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-primary" type="submit" value="Add Income">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -86,7 +88,7 @@
                             <td>{{e.name}}</td>
                             <td>{{e.description}}</td>
                             <td>{{e.cost}}</td>
-                            <td><a href="/expense/edit/{{e.id}}">edit</a>|<a href="/expense/delete/{{e.id}}">delete</a></td>
+                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/expense/edit/{{e.id}}">edit</a></button>|<button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/expense/delete/{{e.id}}">delete</a></button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -115,7 +117,9 @@
                             <input class="form-control" type="text" name="cost" id="cost">
                         </div>
                         <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
-                        <input type="submit" value="Add">
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-primary" type="submit" value="Add Expense">
+                        </div>
                     </form>
                 </div>
             </div>

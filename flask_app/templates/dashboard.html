@@ -34,7 +34,7 @@
                 <tr>
                     <td><a class="text-decoration-none" href="/view/budget/{{b.id}}">{{b.month}}</a></td>
                     <td><a class="text-decoration-none" href="/view/budget/{{b.id}}">{{b.year}}</a></td>
-                    <td><a class="text-decoration-none" href="/view/budget/{{b.id}}">view</a>|<a class="text-decoration-none" href="/budget/edit/{{b.id}}">edit</a>|<a class="text-decoration-none" href="/budget/delete/{{b.id}}">delete</a></td>
+                    <td><button type="button" class="btn btn-primary"><a class="text-decoration-none text-white" href="/view/budget/{{b.id}}">view</a></button>|<button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/budget/edit/{{b.id}}">edit</a></button>|<button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/budget/delete/{{b.id}}">delete</a></button></td>
                 </tr>
                 {% endfor %}
             </tbody>
