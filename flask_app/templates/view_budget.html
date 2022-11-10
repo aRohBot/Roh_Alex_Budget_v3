@@ -20,13 +20,12 @@
         </div>
     </div>
 
-    <h3 class="d-flex justify-content-center bg-success text-white p-2 m-0">{{budget.month}}, {{budget.year}} Current Budget = ${{ income_sum.sum - expense_sum.sum }}</h3>
+    <h3 class="d-flex justify-content-center bg-success text-white p-2 m-0">{{budget.month}} {{budget.year}}  Budget = ${{ income_sum.sum - expense_sum.sum }}</h3>
     <div class="d-flex justify-content-around">
         <div>
             <div class="main">
-                <h3>Income</h3>
-                <table>
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="table-info">
                         <tr>
                             <th>Company Name</th>
                             <th>Monthly Payment</th>
@@ -72,9 +71,8 @@
         </div>
         <div>
             <div class="main">
-                <h3>Expenses</h3>
-                <table>
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="table-info">
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
