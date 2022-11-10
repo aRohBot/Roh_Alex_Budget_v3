@@ -3,6 +3,7 @@ from flask import request, render_template, session, redirect, flash
 import flask_app.models.user as user
 from flask_app.models.income import Income
 from flask_app.models.expense import Expense
+from flask_app.models.sum import Sum
 import re
 
 YEAR_REGEX = re.compile(r'^[0-9]+$')
@@ -19,6 +20,7 @@ class Budget:
         self.user = user.User.get_by_id({'id':session['user_id']})
         self.expenses =[]
         self.incomes =[]
+        self.sum = 0
 
 
     @staticmethod
@@ -73,7 +75,6 @@ class Budget:
         query = "SELECT * FROM budgets LEFT JOIN incomes ON incomes.budget_id = budgets.id WHERE budgets.id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
         this_budget = cls(results[0])
-        income_sum = 0
         if results[0]['incomes.id'] == None:
             return this_budget
         for row in results:
@@ -110,17 +111,33 @@ class Budget:
 
     @classmethod
     def sum_of_expenses(cls,data):
-        query = "SELECT SUM(cost) FROM budgets LEFT JOIN expenses ON expenses.budget_id = budgets.id WHERE budgets.id = %(id)s;"
+        query = "SELECT *, SUM(cost) AS sum FROM budgets LEFT JOIN expenses ON expenses.budget_id = budgets.id WHERE budgets.id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
-        sum = results[0]
+        if results[0]['sum']== None:
+            sum = Sum({'id':id, 'sum': 0})
+            return sum
+        for row in results:
+            esum_data ={
+                'id': id,
+                'sum': row['sum']
+            }
+            sum = Sum(esum_data)
         return sum
 
     @classmethod
     def sum_of_income(cls,data):
-        query = "SELECT SUM(monthly_payment) FROM budgets LEFT JOIN incomes ON incomes.budget_id = budgets.id WHERE budgets.id = %(id)s;"
+        query = "SELECT *, SUM(monthly_payment) AS sum FROM budgets LEFT JOIN incomes ON incomes.budget_id = budgets.id WHERE budgets.id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
-        sum = results[0]
-        return sum
+        if results[0]['sum']== None:
+            sum = Sum({'id':id, 'sum': 0})
+            return sum
+        for row in results:
+            isum_data ={
+                'id': id,
+                'sum': row['sum']
+            }
+            isum = Sum(isum_data)
+        return isum
 
     @classmethod
     def get_one_with_expenses_incomes(cls,data):

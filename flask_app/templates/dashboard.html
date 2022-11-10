@@ -11,18 +11,18 @@
 <body>
 
     <div>
-        <h1>Monthly Budget Manager</h1>
-        <h2>WELCOME, {{ user.username }}! </h2>
-        <div>
-            <a href="/dashboard">Home</a>|
-            <a href="/budget">Start Budgetting</a>|
-            <a href="/logout">Logout</a>
+        <h1 class="d-flex justify-content-center bg-dark text-white p-2 m-0">Monthly Budget Manager</h1>
+        <h2 class="d-flex justify-content-center bg-dark text-white p-2 m-0">WELCOME, {{ user.username }}! </h2>
+        <div class="d-flex justify-content-center bg-dark text-white p-2 m-0">
+            <button type="button" class="btn btn-secondary"><a class="text-decoration-none text-white" href="/dashboard">Home</a></button>|
+            <button type="button" class="btn btn-secondary"><a class="text-decoration-none text-white" href="/budget">Start Budgetting</a></button>|
+            <button type="button" class="btn btn-secondary"><a class="text-decoration-none text-white" href="/logout">Logout</a></button>
         </div>
     </div>
 
     <div class="main">
-        <table>
-            <thead>
+        <table class="table">
+            <thead class="table-info">
                 <tr>
                     <th>Month</th>
                     <th>Year</th>
@@ -32,8 +32,8 @@
             <tbody>
                 {% for b in user.budgets: %}
                 <tr>
-                    <td>{{b.month}}</td>
-                    <td>{{b.year}}</td>
+                    <td><a class="text-decoration-none" href="/view/budget/{{b.id}}">{{b.month}}</a></td>
+                    <td><a class="text-decoration-none" href="/view/budget/{{b.id}}">{{b.year}}</a></td>
                     <td><a href="/view/budget/{{b.id}}">view</a>|<a href="/budget/edit/{{b.id}}">edit</a>|<a href="/budget/delete/{{b.id}}">delete</a></td>
                 </tr>
                 {% endfor %}
