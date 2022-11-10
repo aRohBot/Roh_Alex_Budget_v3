@@ -36,8 +36,8 @@
                         {% for i in budget.incomes: %}
                         <tr>
                             <td>{{i.company_name}}</td>
-                            <td>{{i.monthly_payment}}</td>
-                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/income/edit/{{i.id}}">edit</a></button>|<button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/income/delete/{{i.id}}">delete</a></button></td>
+                            <td>${{i.monthly_payment}}</td>
+                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/income/edit/{{i.id}}">edit</a></button> <button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/income/delete/{{i.id}}">delete</a></button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -85,8 +85,8 @@
                         <tr>
                             <td>{{e.name}}</td>
                             <td>{{e.description}}</td>
-                            <td>{{e.cost}}</td>
-                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/expense/edit/{{e.id}}">edit</a></button>|<button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/expense/delete/{{e.id}}">delete</a></button></td>
+                            <td>${{e.cost}}</td>
+                            <td><button type="button" class="btn btn-warning"><a class="text-decoration-none text-white" href="/expense/edit/{{e.id}}">edit</a></button> <button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="/expense/delete/{{e.id}}">delete</a></button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
