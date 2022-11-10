@@ -14,8 +14,8 @@
     <h1 class="d-flex justify-content-center bg-dark text-white p-2 m-0">Monthly Budget Manager</h1>
 </div>
 
-<div class="main">
-    <div class="left">
+<div class="d-flex justify-content-center">
+    <div class="p-2">
         <h1>Register</h1>
         {% if reg_messages: %}
             {% for message in reg_messages: %}
@@ -23,18 +23,26 @@
             {% endfor %}
         {% endif %}
         <form action="/register" method="post">
-            <label>User Name:</label>
-            <input type="text" name="username">
-            <label>Email:</label>
-            <input type="text" name="email">
-            <label>Password:</label>
-            <input type="password" name="password" id="password">
-            <label>Confirm Password:</label>
-            <input type="password" name="cpass">
+            <div class="form-group">
+                <label>User Name:</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input class="form-control" type="password" name="password" id="password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input class="form-control" type="password" name="cpass">
+            </div>
             <input type="submit" value="Register">
         </form>
     </div>
-    <div class="right">
+    <div class="p-2">
         <h1>Login</h1>
         {% if log_messages: %}
             {% for message in log_messages: %}
@@ -42,10 +50,14 @@
             {% endfor %}
         {% endif %}
         <form action="/login" method="post">
-            <label>Email:</label>
-            <input type="text" name="email">
-            <label>Password:</label>
-            <input type="password" name="password">
+            <div class="form-group">
+                <label>Email:</label>
+                <input class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input class="form-control" type="password" name="password">
+            </div>
             <input type="submit" value="Login">
         </form>
     </div>

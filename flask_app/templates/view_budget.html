@@ -20,90 +20,105 @@
         </div>
     </div>
 
-    <h3>{{budget.month}}, {{budget.year}} Current Budget = ${{ income_sum.sum - expense_sum.sum }}</h3>
-    <div class="main">
-        <h3>Income</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Company Name</th>
-                    <th>Monthly Payment</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in budget.incomes: %}
-                <tr>
-                    <td>{{i.company_name}}</td>
-                    <td>{{i.monthly_payment}}</td>
-                    <td><a href="/income/edit/{{i.id}}">edit</a>|<a href="/income/delete/{{i.id}}">delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <h4>Income total: ${{income_sum.sum}} </h4>
-        </table>
-    </div>
-    <div>
-        <h3>Add Income</h3>
-        {% if income_messages: %}
-            {% for message in income_messages: %}
-                <p style="color: rgb(168, 29, 29)">{{message}}</p>
-            {% endfor %}
-        {% endif %}
+    <h3 class="d-flex justify-content-center bg-success text-white p-2 m-0">{{budget.month}}, {{budget.year}} Current Budget = ${{ income_sum.sum - expense_sum.sum }}</h3>
+    <div class="d-flex justify-content-around">
         <div>
-            <form action="/create/income" method="post">
-                <label>Company Name:</label>
-                <input type="text" name="company_name" id="company_name">
-                <label>Monthly Payment:</label>
-                <input type="text" name="monthly_payment" id="monthly_payment">
-                <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
-                <input type="submit" value="Add">
-            </form>
+            <div class="main">
+                <h3>Income</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Monthly Payment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in budget.incomes: %}
+                        <tr>
+                            <td>{{i.company_name}}</td>
+                            <td>{{i.monthly_payment}}</td>
+                            <td><a href="/income/edit/{{i.id}}">edit</a>|<a href="/income/delete/{{i.id}}">delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <h4>Income total: ${{income_sum.sum}} </h4>
+                </table>
+            </div>
+            <div>
+                <h3>Add Income</h3>
+                {% if income_messages: %}
+                    {% for message in income_messages: %}
+                        <p style="color: rgb(168, 29, 29)">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <div>
+                    <form action="/create/income" method="post">
+                        <div class="form-group">
+                            <label>Company Name:</label>
+                            <input class="form-control" type="text" name="company_name" id="company_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Payment:</label>
+                            <input class="form-control" type="text" name="monthly_payment" id="monthly_payment">
+                        </div>
+                        <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
+                        <input type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="main">
-        <h3>Expenses</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Cost</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for e in expenses.expenses %}
-                <tr>
-                    <td>{{e.name}}</td>
-                    <td>{{e.description}}</td>
-                    <td>{{e.cost}}</td>
-                    <td><a href="/expense/edit/{{e.id}}">edit</a>|<a href="/expense/delete/{{e.id}}">delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <h4>Expenses total: ${{expense_sum.sum}}</h4>
-        </table>
-    </div>
-    <div>
-        <h3>Add Expenses</h3>
-        {% if expense_messages: %}
-            {% for message in expense_messages: %}
-                <p style="color: rgb(168, 29, 29)">{{message}}</p>
-            {% endfor %}
-        {% endif %}
         <div>
-            <form action="/create/expense" method="post">
-                <label>Name:</label>
-                <input type="text" name="name" id="name">
-                <label>Description:</label>
-                <input type="text" name="description" id="description">
-                <label>Cost:</label>
-                <input type="text" name="cost" id="cost">
-                <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
-                <input type="submit" value="Add">
-            </form>
+            <div class="main">
+                <h3>Expenses</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Cost</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in expenses.expenses %}
+                        <tr>
+                            <td>{{e.name}}</td>
+                            <td>{{e.description}}</td>
+                            <td>{{e.cost}}</td>
+                            <td><a href="/expense/edit/{{e.id}}">edit</a>|<a href="/expense/delete/{{e.id}}">delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <h4>Expenses total: ${{expense_sum.sum}}</h4>
+                </table>
+            </div>
+            <div>
+                <h3>Add Expenses</h3>
+                {% if expense_messages: %}
+                    {% for message in expense_messages: %}
+                        <p style="color: rgb(168, 29, 29)">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <div>
+                    <form action="/create/expense" method="post">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input class="form-control" type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input class="form-control" type="text" name="description" id="description">
+                        </div>
+                        <div class="form-group">
+                            <label>Cost:</label>
+                            <input class="form-control" type="text" name="cost" id="cost">
+                        </div>
+                        <input type="hidden" name="budget_id" value="{{budget.id}}" id="budget_id">
+                        <input type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -21,21 +21,23 @@
     </div>
 
     <div>
-        <h3>Update Income</h3>
+        <h3 class="d-flex justify-content-center">Update Income</h3>
         {% if income_messages: %}
             {% for message in income_messages: %}
                 <p style="color: rgb(168, 29, 29)">{{message}}</p>
             {% endfor %}
         {% endif %}
         <div>
-            <form action="/update/income/{{income.id}}" method="post">
-                <label>Company Name:</label>
-                <input type="text" name="company_name" id="company_name" value="{{income.company_name}}">
-                <label>Monthly Payment:</label>
-                <input type="text" name="monthly_payment" id="monthly_payment" value="{{income.monthly_payment}}">
-                <input type="hidden" name="budget_id" value="{{income.budget_id}}" id="budget_id">
-                <input type="submit" value="Update">
-            </form>
+            <div class="d-flex justify-content-center">
+                <form action="/update/income/{{income.id}}" method="post">
+                    <label>Company Name:</label>
+                    <input class="form-control" type="text" name="company_name" id="company_name" value="{{income.company_name}}">
+                    <label>Monthly Payment:</label>
+                    <input class="form-control" type="text" name="monthly_payment" id="monthly_payment" value="{{income.monthly_payment}}">
+                    <input type="hidden" name="budget_id" value="{{income.budget_id}}" id="budget_id">
+                    <input type="submit" value="Update">
+                </form>
+            </div>
         </div>
     </div>
 

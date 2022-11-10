@@ -21,23 +21,25 @@
     </div>
 
     <div>
-        <h3>Update Expenses</h3>
+        <h3 class="d-flex justify-content-center">Update Expenses</h3>
         {% if expense_messages: %}
             {% for message in expense_messages: %}
                 <p style="color: rgb(168, 29, 29)">{{message}}</p>
             {% endfor %}
         {% endif %}
         <div>
-            <form action="/update/expense/{{expense.id}}" method="post">
-                <label>Name:</label>
-                <input type="text" name="name" id="name" value="{{expense.name}}">
-                <label>Description:</label>
-                <input type="text" name="description" id="description" value="{{expense.description}}">
-                <label>Cost:</label>
-                <input type="text" name="cost" id="cost" value="{{expense.cost}}">
-                <input type="hidden" name="budget_id" value="{{expense.budget_id}}" id="budget_id">
-                <input type="submit" value="Update">
-            </form>
+            <div class="d-flex justify-content-center">
+                <form action="/update/expense/{{expense.id}}" method="post">
+                    <label>Name:</label>
+                    <input class="form-control" type="text" name="name" id="name" value="{{expense.name}}">
+                    <label>Description:</label>
+                    <input class="form-control" type="text" name="description" id="description" value="{{expense.description}}">
+                    <label>Cost:</label>
+                    <input class="form-control" type="text" name="cost" id="cost" value="{{expense.cost}}">
+                    <input type="hidden" name="budget_id" value="{{expense.budget_id}}" id="budget_id">
+                    <input type="submit" value="Update">
+                </form>
+            </div>
         </div>
     </div>
 
