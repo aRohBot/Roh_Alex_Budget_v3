@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+    <div>
+        <h1>Monthly Budget Manager</h1>
+        <h2>WELCOME, {{ user.username }}! </h2>
+        <div>
+            <a href="/dashboard">Home</a>|
+            <a href="/budget">Start Budgetting</a>|
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div>
+        <h3>Update Expenses</h3>
+        {% if expense_messages: %}
+            {% for message in expense_messages: %}
+                <p style="color: rgb(168, 29, 29)">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        <div>
+            <form action="/update/expense/{{expense.id}}" method="post">
+                <label>Name:</label>
+                <input type="text" name="name" id="name" value="{{expense.name}}">
+                <label>Description:</label>
+                <input type="text" name="description" id="description" value="{{expense.description}}">
+                <label>Cost:</label>
+                <input type="text" name="cost" id="cost" value="{{expense.cost}}">
+                <input type="hidden" name="budget_id" value="{{expense.budget_id}}" id="budget_id">
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

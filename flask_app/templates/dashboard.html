@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+    <div>
+        <h1>Monthly Budget Manager</h1>
+        <h2>WELCOME, {{ user.username }}! </h2>
+        <div>
+            <a href="/dashboard">Home</a>|
+            <a href="/budget">Start Budgetting</a>|
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in user.budgets: %}
+                <tr>
+                    <td>{{b.month}}</td>
+                    <td>{{b.year}}</td>
+                    <td><a href="/view/budget/{{b.id}}">view</a>|<a href="/budget/edit/{{b.id}}">edit</a>|<a href="/budget/delete/{{b.id}}">delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+    <div>
+        <h1>Monthly Budget Manager</h1>
+        <h2>WELCOME, {{ user.username }}! </h2>
+        <div>
+            <a href="/dashboard">Home</a>|
+            <a href="/budget">Start Budgetting</a>|
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div>
+            <h1>Select the Month and Year to budget</h1>
+            {% if budget_messages: %}
+                {% for message in budget_messages: %}
+                    <p style="color: rgb(168, 29, 29)">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            <form action="/create/budget" method="post">
+                <label>Month:</label>
+                <select class="custom-select" name="month" id="month">
+                    <option selected="">Please select a month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <label name="year" id="year">Year:</label>
+                <input type="text" name="year" id="year">
+                <input type="hidden" name="user_id" id="user_id" value="{{user.id}}">
+                <input type="submit" value="Create">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
